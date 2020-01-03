@@ -1,5 +1,7 @@
 package com.xxxx.xxxx;
 
+import android.widget.Toast;
+
 import com.getcapacitor.JSObject;
 import com.getcapacitor.NativePlugin;
 import com.getcapacitor.Plugin;
@@ -11,7 +13,10 @@ public class MyPlugin extends Plugin {
 
     @PluginMethod()
     public void echo(PluginCall call) {
-        String value = call.getString("value");
+        Toast toast=Toast.makeText(getContext(),"Toast提示消息",Toast.LENGTH_SHORT    );
+        toast.show();
+
+         String value = call.getString("value");
 
         JSObject ret = new JSObject();
         ret.put("value", value);
