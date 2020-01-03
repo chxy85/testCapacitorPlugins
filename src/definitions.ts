@@ -6,4 +6,5 @@ declare module "@capacitor/core" {
 
 export interface MyPluginPlugin {
   echo(options: { value: string }): Promise<{value: string}>;
+  loginToWx(options: { value: string }): Promise<{value: string}>;
 }
