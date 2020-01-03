@@ -13,7 +13,7 @@ public class MyPlugin extends Plugin {
 
     @PluginMethod()
     public void echo(PluginCall call) {
-        Toast toast=Toast.makeText(getContext(),"Toast提示消息",Toast.LENGTH_SHORT    );
+        Toast toast=Toast.makeText(getContext(),"Toast提示消息1111111",Toast.LENGTH_SHORT    );
         toast.show();
 
          String value = call.getString("value");
