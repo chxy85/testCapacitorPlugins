@@ -37,6 +37,8 @@ public class MyPlugin extends Plugin {
     public void loginToWx(PluginCall call) {
         Log.e("WxLoginPlugin","-------------------------======loginToWx:");
         //请求响应权限'
+        api = WXAPIFactory.createWXAPI(getContext(), "wx7cc21f33633fa22f", false);
+
         api.registerApp("wx7cc21f33633fa22f");
     }
 }
