@@ -1,5 +1,15 @@
 
   <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.xxxx.xxxx.capacitorpluginwechat">
+
+    <activity
+        android:name=".wxapi.WXEntryActivity"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar"
+        android:exported="true"
+        android:taskAffinity="com.lxlx.video1plus"
+        android:launchMode="singleTask">
+    </activity>
+
   </manifest>
   
