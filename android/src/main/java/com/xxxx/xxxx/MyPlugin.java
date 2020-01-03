@@ -20,7 +20,7 @@ public class MyPlugin extends Plugin {
 
     @PluginMethod()
     public void echo(PluginCall call) {
-        Log.e("WxLoginPlugin","-------------------------======echo:");
+        Log.e("WxLoginPlugin","-------------------------======echo1:");
 
 
         Toast toast=Toast.makeText(getContext(),"Toast提示消息1111111",Toast.LENGTH_SHORT    );
