@@ -2,6 +2,16 @@
   <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.xxxx.xxxx.capacitorpluginwechat">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <!-- for mta statistics -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!-- Permissions
+
     <activity
         android:name=".wxapi.WXEntryActivity"
         android:label="@string/app_name"
@@ -10,6 +20,6 @@
         android:taskAffinity="com.lxlx.video1plus"
         android:launchMode="singleTask">
     </activity>
-
+  -->
   </manifest>
   
