@@ -1,4 +1,4 @@
-package com.xxxx.xxxx;
+package com.lxlx.video1plus;
 
 import android.widget.Toast;
 import android.util.Log;
