@@ -1,5 +1,5 @@
-package __PACKAGE_NAME__;
-
+//package __PACKAGE_NAME__;
+package com.lxlx.video1plus.wxapi;
 
 
 //import org.cocos2dx.lua.AppActivity;
@@ -16,6 +16,8 @@ import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+
+import android.support.v4.content.LocalBroadcastManager;
 
 public class WXEntryActivity extends Activity implements IWXAPIEventHandler{
 
@@ -53,30 +55,27 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler{
 	public void onResp(BaseResp resp) {
 		Log.e("WxLoginPlugin","-------------------------======onResp:"+resp.errCode);
 
+		Intent intent = new Intent("wxResp");
 		switch(resp.errCode){
 			case BaseResp.ErrCode.ERR_OK:
+				String code = ((SendAuth.Resp) resp).code; // 这里的code就是接入指南里要拿到的code
+				intent.putExtra("type", resp.getType());
+				intent.putExtra("errcode", resp.errCode);
 				if (resp.getType() == ConstantsAPI.COMMAND_SENDAUTH)//登陆回调
 				{
-					String code = ((SendAuth.Resp) resp).code; // 这里的code就是接入指南里要拿到的code
-					//AppActivity.loginToWxCBK(code,resp.errCode);
+					intent.putExtra("code", code);
 				}
-				else if (resp.getType() == ConstantsAPI.COMMAND_SENDMESSAGE_TO_WX)//分享回调
-				{
-					String code = String.valueOf( BaseResp.ErrCode.ERR_OK);; // 这里的code就是接入指南里要拿到的code
-					//AppActivity.shareToWXFriendCallBack(code);
-				}
+				LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
 				break;
 			case BaseResp.ErrCode.ERR_USER_CANCEL:
-				if (resp.getType() == ConstantsAPI.COMMAND_SENDAUTH)//登陆回调
-				{
-					String code = "-1"; // 这里的code就是接入指南里要拿到的code
-					//AppActivity.loginToWxCBK(code,resp.errCode);
-				}
-				else if (resp.getType() == ConstantsAPI.COMMAND_SENDMESSAGE_TO_WX)//分享朋友圈回调
-				{
-					String code = String.valueOf( BaseResp.ErrCode.ERR_USER_CANCEL);; // 这里的code就是接入指南里要拿到的code
-					//AppActivity.shareToWXFriendCallBack(code);
-				}
+				intent.putExtra("type", resp.getType());
+				intent.putExtra("errcode", resp.errCode);
+				LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
+				break;
+			case BaseResp.ErrCode.ERR_AUTH_DENIED:
+				intent.putExtra("type", resp.getType());
+				intent.putExtra("errcode", resp.errCode);
+				LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
 				break;
 			default:
 
